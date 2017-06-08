@@ -72,7 +72,7 @@
     <!-- status • name -->
     <string name="other_torrent_notify_template" formatted="false">%1$s \u2022 %2$s</string>
     <string name="torrent_count_notify_template" formatted="false">Atsiunčia: %1$d Iš viso: %2$d</string>
-    <string name="app_running_in_the_background">LibreTorrent veikia foniniame rėžime</string>
+    <string name="app_running_in_the_background">aTorrent veikia foniniame rėžime</string>
     <string name="network_online">Tinklo būklė: Prisijungęs</string>
     <string name="network_offline">Tinklo būklė: Atsijungęs</string>
 
@@ -329,6 +329,6 @@
 
     <!-- About dialog -->
     <string name="about_title">Apie LibreTorrent</string>
-    <string name="about_description">LibreTorrent yra laisvas kaip pati laisvė torrentų klientas Android 4+, paremtas libtorrent (Java wrapper frostwire-jlibtorrent https://github.com/frostwire/frostwire-jlibtorrent ) lib.\n\nLibreTorrent yra nemokama programa, išleista pagal GNU General Public License v3 (GPLv3)\nhttp://www.gnu.org/copyleft/gpl.html</string>
+    <string name="about_description">aTorrent yra laisvas kaip pati laisvė torrentų klientas Android 4+, paremtas libtorrent (Java wrapper frostwire-jlibtorrent https://github.com/frostwire/frostwire-jlibtorrent ) lib.\n\nLibreTorrent yra nemokama programa, išleista pagal GNU General Public License v3 (GPLv3)\nhttp://www.gnu.org/copyleft/gpl.html</string>
     <string name="about_changelog">Pakeitimų žurnalas</string>
 </resources>

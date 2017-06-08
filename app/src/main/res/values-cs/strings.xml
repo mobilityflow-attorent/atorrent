@@ -72,7 +72,7 @@
     <!-- status • name -->
     <string name="other_torrent_notify_template" formatted="false">%1$s \u2022 %2$s</string>
     <string name="torrent_count_notify_template" formatted="false">Stahování: %1$d Celkem: %2$d</string>
-    <string name="app_running_in_the_background">LibreTorrent běží na pozadí</string>
+    <string name="app_running_in_the_background">aTorrent běží na pozadí</string>
     <string name="network_online">Stav sítě: Online</string>
     <string name="network_offline">Stav sítě: Offline</string>
 
@@ -330,6 +330,6 @@
 
     <!-- About dialog -->
     <string name="about_title">O LibreTorrent</string>
-    <string name="about_description">LibreTorrent je volně dostupný torrent klient pro Android 4+, založený na libtorrent (Java wrapper frostwire-jlibtorrent https://github.com/frostwire/frostwire-jlibtorrent ) lib.\n\nLibreTorrent je volně dostupný software, vydaný podle podmínek GNU General Public License v3 (GPLv3)\nhttp://www.gnu.org/copyleft/gpl.html</string>
+    <string name="about_description">aTorrent je volně dostupný torrent klient pro Android 4+, založený na libtorrent (Java wrapper frostwire-jlibtorrent https://github.com/frostwire/frostwire-jlibtorrent ) lib.\n\nLibreTorrent je volně dostupný software, vydaný podle podmínek GNU General Public License v3 (GPLv3)\nhttp://www.gnu.org/copyleft/gpl.html</string>
     <string name="about_changelog">Seznam změn</string>
 </resources>

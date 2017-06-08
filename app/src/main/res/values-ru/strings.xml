@@ -64,7 +64,7 @@
     <string name="seeding_torrent_notify_template" formatted="false">%1$s \u2022 \u2191 %2$s/с \u2022 %3$s</string>
     <string name="other_torrent_notify_template" formatted="false">%1$s \u2022 %2$s</string>
     <string name="torrent_count_notify_template" formatted="false">Загружается: %1$d Всего: %2$d</string>
-    <string name="app_running_in_the_background">LibreTorrent запущен в фоне</string>
+    <string name="app_running_in_the_background">aTorrent запущен в фоне</string>
     <string name="network_online">Статус сети: Онлайн</string>
     <string name="network_offline">Статус сети: Оффлайн</string>
 
@@ -313,6 +313,6 @@
 
     <!-- About dialog -->
     <string name="about_title">О LibreTorrent</string>
-    <string name="about_description">LibreTorrent - свободный торрент-клиент для Android 4+, основанный на библиотеке libtorrent (Java обёртка frostwire-jlibtorrent https://github.com/frostwire/frostwire-jlibtorrent ).\n\nLibreTorrent является свободным программным обеспечением, выпущенным в соответствии с условиями лицензии GNU General Public License v3 (GPLv3)\nhttp://www.gnu.org/copyleft/gpl.html</string>
+    <string name="about_description">aTorrent - свободный торрент-клиент для Android 4+, основанный на библиотеке libtorrent (Java обёртка frostwire-jlibtorrent https://github.com/frostwire/frostwire-jlibtorrent ).\n\nLibreTorrent является свободным программным обеспечением, выпущенным в соответствии с условиями лицензии GNU General Public License v3 (GPLv3)\nhttp://www.gnu.org/copyleft/gpl.html</string>
     <string name="about_changelog">Изменения</string>
 </resources>

@@ -72,7 +72,7 @@
     <!-- status • name -->
     <string name="other_torrent_notify_template" formatted="false">%1$s \u2022 %2$s</string>
     <string name="torrent_count_notify_template" formatted="false">Baixando: %1$d Total: %2$d</string>
-    <string name="app_running_in_the_background">LibreTorrent está rodando em segundo plano</string>
+    <string name="app_running_in_the_background">aTorrent está rodando em segundo plano</string>
     <string name="network_online">Status da rede: Online</string>
     <string name="network_offline">Status da rede: Offline</string>
 
@@ -332,6 +332,6 @@
 
     <!-- About dialog -->
     <string name="about_title">Sobre o LibreTorrent</string>
-    <string name="about_description">LibreTorrent é um cliente torrent Free as in Freedom para Android 4+, baseado na biblioteca libtorrent (Java wrapper frostwire-jlibtorrent https://github.com/frostwire/frostwire-jlibtorrent ).\n\nLibreTorrent é software livre, lançado sob os termos da GNU General Public License v3 (GPLv3)\nhttp://www.gnu.org/copyleft/gpl.html</string>
+    <string name="about_description">aTorrent é um cliente torrent Free as in Freedom para Android 4+, baseado na biblioteca libtorrent (Java wrapper frostwire-jlibtorrent https://github.com/frostwire/frostwire-jlibtorrent ).\n\nLibreTorrent é software livre, lançado sob os termos da GNU General Public License v3 (GPLv3)\nhttp://www.gnu.org/copyleft/gpl.html</string>
     <string name="about_changelog">Changelog</string>
 </resources>
