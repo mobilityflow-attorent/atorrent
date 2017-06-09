@@ -9,7 +9,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 4
-        versionName "1.3"
+        versionName "3.0-beta"
         vectorDrawables.useSupportLibrary = true
         resValue "string", "tray__authority", "${applicationId}.tray"
     }
@@ -20,13 +20,13 @@ android {
         }
     }
     productFlavors {
-        demo {
-            applicationIdSuffix ".demo"
-            versionNameSuffix "-demo"
+        free {
+            versionNameSuffix "-free"
+            buildConfigField("Boolean", "IS_PRO", "false")
         }
-        full {
-            applicationIdSuffix ".full"
-            versionNameSuffix "-full"
+        pro {
+            applicationIdSuffix ".prof"
+            buildConfigField("Boolean", "IS_PRO", "true")
         }
     }
 }
