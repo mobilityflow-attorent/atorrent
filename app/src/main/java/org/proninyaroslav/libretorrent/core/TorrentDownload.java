@@ -25,6 +25,7 @@ import android.util.Log;
 import com.frostwire.jlibtorrent.AlertListener;
 import com.frostwire.jlibtorrent.AnnounceEntry;
 import com.frostwire.jlibtorrent.FileStorage;
+import com.frostwire.jlibtorrent.MoveFlags;
 import com.frostwire.jlibtorrent.PeerInfo;
 import com.frostwire.jlibtorrent.PieceIndexBitfield;
 import com.frostwire.jlibtorrent.Priority;
@@ -32,10 +33,13 @@ import com.frostwire.jlibtorrent.SessionHandle;
 import com.frostwire.jlibtorrent.TorrentHandle;
 import com.frostwire.jlibtorrent.TorrentInfo;
 import com.frostwire.jlibtorrent.TorrentStatus;
+import com.frostwire.jlibtorrent.Vectors;
 import com.frostwire.jlibtorrent.alerts.Alert;
 import com.frostwire.jlibtorrent.alerts.AlertType;
 import com.frostwire.jlibtorrent.alerts.SaveResumeDataAlert;
 import com.frostwire.jlibtorrent.alerts.TorrentAlert;
+import com.frostwire.jlibtorrent.swig.add_torrent_params;
+import com.frostwire.jlibtorrent.swig.byte_vector;
 
 import org.proninyaroslav.libretorrent.core.utils.TorrentUtils;
 
@@ -203,7 +207,8 @@ public class TorrentDownload implements TorrentDownloadInterface
     {
         try {
             if (th.isValid()) {
-                TorrentUtils.saveResumeData(context, torrent.getId(), alert.resumeData().bencode());
+                byte_vector data = add_torrent_params.write_resume_data(alert.params().swig()).bencode();
+                TorrentUtils.saveResumeData(context, torrent.getId(), Vectors.byte_vector2bytes(data));
             }
         } catch (Throwable e) {
             Log.e(TAG, "Error saving resume data of " + torrent + ":");
@@ -214,7 +219,7 @@ public class TorrentDownload implements TorrentDownloadInterface
     @Override
     public void pause()
     {
-        if (th == null) {
+        if (!th.isValid()) {
             return;
         }
 
@@ -226,7 +231,7 @@ public class TorrentDownload implements TorrentDownloadInterface
     @Override
     public void resume()
     {
-        if (th == null) {
+        if (!th.isValid()) {
             return;
         }
 
@@ -250,7 +255,7 @@ public class TorrentDownload implements TorrentDownloadInterface
     @Override
     public int getProgress()
     {
-        if (th == null) {
+        if (th == null || !th.isValid()) {
             return 0;
         }
 
@@ -289,7 +294,7 @@ public class TorrentDownload implements TorrentDownloadInterface
     @Override
     public void prioritizeFiles(Priority[] priorities)
     {
-        if (th == null) {
+        if (th == null || !th.isValid()) {
             return;
         }
 
@@ -553,10 +558,10 @@ public class TorrentDownload implements TorrentDownloadInterface
     @Override
     public boolean[] pieces()
     {
-        PieceIndexBitfield bitfield = th.status().pieces();
+        PieceIndexBitfield bitfield = th.status(TorrentHandle.StatusFlags.QUERY_PIECES.swig()).pieces();
         boolean[] pieces = new boolean[bitfield.size()];
 
-        for (int i =0; i < bitfield.size(); i++) {
+        for (int i = 0; i < bitfield.size(); i++) {
             pieces[i] = bitfield.getBit(i);
         }
 
@@ -610,10 +615,8 @@ public class TorrentDownload implements TorrentDownloadInterface
     @Override
     public void setDownloadPath(String path)
     {
-        final int ALWAYS_REPLACE_FILES = 0;
-
         try {
-            th.moveStorage(path, ALWAYS_REPLACE_FILES);
+            th.moveStorage(path, MoveFlags.ALWAYS_REPLACE_FILES);
 
         } catch (Exception e) {
             Log.e(TAG, "Error changing save path: ");

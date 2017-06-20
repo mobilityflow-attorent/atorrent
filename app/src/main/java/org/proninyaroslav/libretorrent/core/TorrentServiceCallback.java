@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Yaroslav Pronin <proninyaroslav@mail.ru>
+ * Copyright (C) 2017 Yaroslav Pronin <proninyaroslav@mail.ru>
  *
  * This file is part of LibreTorrent.
  *
@@ -17,22 +17,15 @@
  * along with LibreTorrent.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.proninyaroslav.libretorrent.fragments;
+package org.proninyaroslav.libretorrent.core;
 
-import android.content.Intent;
+import android.os.Bundle;
 
-/*
- * The basic callback interface with codes and functions, returned by fragments.
- */
+import org.proninyaroslav.libretorrent.core.stateparcel.TorrentStateParcel;
 
-public interface FragmentCallback
+public interface TorrentServiceCallback
 {
-    @SuppressWarnings("unused")
-    String TAG = FragmentCallback.class.getSimpleName();
-
-    enum ResultCode {
-        OK, CANCEL, BACK
-    }
-
-    void fragmentFinished(Intent intent, ResultCode code);
+    void onTorrentStateChanged(TorrentStateParcel state);
+    void onTorrentsStateChanged(Bundle states);
+    void onTorrentAdded(TorrentStateParcel states, Throwable exception);
 }
