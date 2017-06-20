@@ -89,7 +89,7 @@ public class TorrentEngine extends SessionManager
     public static final boolean DEFAULT_ENCRYPT_OUT_CONNECTIONS = true;
 
     private static final int[] INNER_LISTENER_TYPES = new int[] {
-            AlertType.TORRENT_ADDED.swig()
+            AlertType.ADD_TORRENT.swig()
     };
 
     private Context context;
@@ -99,11 +99,29 @@ public class TorrentEngine extends SessionManager
     private ExecutorService loadTorrentsExec;
     private Map<String, Torrent> addTorrentsQueue = new HashMap<>();
 
-    public TorrentEngine(Context context, TorrentEngineCallback callback) throws Exception
+    private TorrentEngine() /*throws Exception*/
     {
-        this.context = context;
         innerListener = new InnerListener();
         loadTorrentsExec = Executors.newCachedThreadPool();
+    }
+
+    public static TorrentEngine getInstance()
+    {
+        return Loader.INSTANCE;
+    }
+
+    private static class Loader
+    {
+        static final TorrentEngine INSTANCE = new TorrentEngine();
+    }
+
+    public void setContext(Context context)
+    {
+        this.context = context;
+    }
+
+    public void setCallback(TorrentEngineCallback callback)
+    {
         this.callback = callback;
     }
 
@@ -166,7 +184,7 @@ public class TorrentEngine extends SessionManager
         public void alert(Alert<?> alert)
         {
             switch (alert.type()) {
-                case TORRENT_ADDED:
+                case ADD_TORRENT:
                     TorrentAlert<?> torrentAlert = (TorrentAlert<?>) alert;
 
                     Sha1Hash sha1hash = torrentAlert.handle().infoHash();
