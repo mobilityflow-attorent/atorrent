@@ -1,0 +1,11 @@
+- web interface
+- RSS
+- add a magnet links instantly
+- streaming support
+- download torrents Wi-Fi only
+- download torrents by schedule
+- I2P torrents support
+- notificate if the file does not download in x seconds
+- maximum peers per torrent and maximum upload slots per torrent to limitations
+- automatically shutdown if no torrents are active
+- watch directory

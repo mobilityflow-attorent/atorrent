@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    signingConfigs {
+        config {
+            keyAlias 'aTorrent'
+            keyPassword '4b03e5ea662e'
+            storeFile file('key-store')
+            storePassword '4b03e5ea662e'
+        }
+    }
+    defaultConfig {
+        applicationId "com.mobilityflow.torrent"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 4000
+        versionName "3.0.0-beta"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors {
+        free {
+            versionNameSuffix "-free"
+            buildConfigField("Boolean", "IS_PRO", "false")
+        }
+        pro {
+            applicationIdSuffix ".prof"
+            buildConfigField("Boolean", "IS_PRO", "true")
+        }
+    }
+    productFlavors {
+        demo {
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+        }
+        full {
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+        }
+    }
+}
+repositories {
+    mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+def ANDROID_SUPPORT_VERSION='25.3.0'
+def JLIBTORRENT_VERSION='1.2.0.10'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+
+    /* Standard Android Support libs */
+    compile 'com.android.support:support-v4:' + ANDROID_SUPPORT_VERSION
+    compile 'com.android.support:appcompat-v7:' + ANDROID_SUPPORT_VERSION
+    compile 'com.android.support:design:' + ANDROID_SUPPORT_VERSION
+    compile 'com.android.support:cardview-v7:' + ANDROID_SUPPORT_VERSION
+
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'commons-io:commons-io:2.5'
+    compile 'net.grandcentrix.tray:tray:0.12.0'
+    compile 'ch.acra:acra:4.9.2'
+
+    compile 'com.takisoft.fix:preference-v7:25.3.0.0'
+    compile 'com.github.aakira:expandable-layout:1.6.0@aar'
+    compile 'com.github.clans:fab:1.6.4'
+    compile 'com.github.yukuku:ambilwarna:2.0.1'
+
+    /* libtorrent wrapper */
+    compile 'com.frostwire:jlibtorrent:' + JLIBTORRENT_VERSION
+    compile 'com.frostwire:jlibtorrent-android-arm:' + JLIBTORRENT_VERSION
+    compile 'com.frostwire:jlibtorrent-android-arm64:' + JLIBTORRENT_VERSION
+    compile 'com.frostwire:jlibtorrent-android-x86:' + JLIBTORRENT_VERSION
+    compile 'com.frostwire:jlibtorrent-android-x86_64:' + JLIBTORRENT_VERSION
+}
