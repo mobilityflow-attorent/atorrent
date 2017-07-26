@@ -905,18 +905,28 @@ public class MainFragment extends Fragment
         }
     }
 
-    private void initAboutDialog(final AlertDialog dialog)
-    {
+    private void initAboutDialog(final AlertDialog dialog)  {
+
+        // TODO it's possible to fetch version from app/build.gradle (and later from resources)
+
         TextView version = (TextView) dialog.findViewById(R.id.about_version);
 
-        if (version != null) {
+        if (version != null) {// wut? 0_o
+
+            String value = "";
             try {
                 PackageInfo info = activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0);
-                version.setText(info.versionName);
+                value = info.versionName;
 
             } catch (PackageManager.NameNotFoundException e) {
                 /* Ignore */
             }
+
+            // Show if it is free or pro.
+            if (value.length() > 0) value += " ";
+            value += "[" + (BuildConfig.IS_PRO ? "PRO" : "FREE") + "]";
+
+            version.setText(value);
         }
     }
 
