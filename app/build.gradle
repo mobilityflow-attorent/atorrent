@@ -37,16 +37,6 @@ android {
             buildConfigField("Boolean", "IS_PRO", "true")
         }
     }
-    productFlavors {
-        demo {
-            applicationIdSuffix ".demo"
-            versionNameSuffix "-demo"
-        }
-        full {
-            applicationIdSuffix ".full"
-            versionNameSuffix "-full"
-        }
-    }
 }
 repositories {
     mavenCentral()
